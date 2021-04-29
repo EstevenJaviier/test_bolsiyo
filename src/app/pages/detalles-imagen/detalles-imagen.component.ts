@@ -37,6 +37,10 @@ export class DetallesImagenComponent implements OnInit {
     });
   }
 
+  /**
+   * Puesto que en la consulta se obtiene un string de los tags
+   * se aplica la funcion split para separalos y poder imprimirlos individualmente
+   */
   handlerTags(tags: string) {
     return tags?.split(',');
   }

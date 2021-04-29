@@ -22,6 +22,11 @@ export class SearchComponent implements OnInit {
       category: [null],
     });
 
+    /**
+     * hago uso de queryParamMap para hacer la consulta dinamicamente segun cambien los parametros
+     * en la url
+     */
+
     this.route.queryParamMap.subscribe((params: ParamMap) => {
       this.formSearch.patchValue({
         q: params.get('q'),
@@ -31,6 +36,9 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit() {
+    /**
+     * Se verifica que el texto ingresado para la busqueda no exceda un máximo 100 caracteres
+     */
     const q = this.formSearch.get('q').value;
     if (q?.length > 100) {
       return alert('La busqueda debe ser de máximo 100 caracteres.');

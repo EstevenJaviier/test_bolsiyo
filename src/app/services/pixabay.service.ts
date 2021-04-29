@@ -17,12 +17,17 @@ export class PixabayService {
     q: string;
     category: string;
   }): Observable<any> {
+    /**
+     * Parametros para la consulta en el endpoint de Pixabay
+     * la key y el endpoint se encuentra guardado en el archivo environment
+     */
     const url = new URLSearchParams({
       key: environment.pixabay.key,
       lang: 'es',
       q: q || '',
       category: category || '',
     });
+
     return this.http
       .get(environment.pixabay.endpoint + `?${url}`)
       .pipe(map((data) => data));
