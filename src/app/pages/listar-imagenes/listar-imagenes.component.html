@@ -21,9 +21,10 @@
       >
         <div class="card shadow-sm">
           <img
-            [src]="imagen.webformatURL"
+            [imagen]="imagen?.webformatURL"
             class="card-img-top foto"
             [alt]="imagen.tags"
+            ImgLazy
           />
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between">

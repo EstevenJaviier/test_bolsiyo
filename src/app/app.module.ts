@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DetallesImagenComponent } from './pages/detalles-imagen/detalles-imagen.component';
 
 import { fromRoot } from './states/imagenes';
+import { ImgLazyDirective } from './directives/img-lazy.directive';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { environment } from 'src/environments/environment';
     SearchComponent,
     NavbarComponent,
     DetallesImagenComponent,
+    ImgLazyDirective,
   ],
   imports: [
     BrowserModule,
