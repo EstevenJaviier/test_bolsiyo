@@ -1,0 +1,47 @@
+<div class="container">
+  <h3
+    *ngIf="
+      (imagenes$ | async).imagenes && !(imagenes$ | async).imagenes?.length
+    "
+  >
+    No se encontraron resultados para la busqueda
+  </h3>
+
+  <h3 *ngIf="q">{{ q }}</h3>
+  <hr />
+  <div class="row">
+    <div
+      class="col-lg-4 col-sm-6 mb-2"
+      *ngFor="let imagen of (imagenes$ | async).imagenes"
+    >
+      <a
+        [routerLink]="['/', imagen?.id]"
+        class="card-link"
+        queryParamsHandling="merge"
+      >
+        <div class="card shadow-sm">
+          <img
+            [src]="imagen.webformatURL"
+            class="card-img-top foto"
+            [alt]="imagen.tags"
+          />
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+              <p class="card-text mb-0">
+                <strong>👍 {{ imagen?.likes | number }}</strong> Likes
+              </p>
+              <p class="card-text mb-0">
+                <strong>👁‍🗨 {{ imagen?.views | number }}</strong> Vistas
+              </p>
+            </div>
+
+            <hr />
+            <ng-container *ngFor="let tag of handlerTags(imagen?.tags)">
+              <span class="badge badge-primary ml-1"> {{ tag }}</span>
+            </ng-container>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

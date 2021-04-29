@@ -1,0 +1,40 @@
+<div class="container">
+  <h3>
+    IMAGEN: <strong>{{ this.imagenId }}</strong>
+  </h3>
+  <hr />
+
+  <div class="row">
+    <div class="col-lg-7 mb-3 text-center">
+      <img
+        class="shadow-lg img-fluid foto"
+        [src]="imagen?.webformatURL"
+        [alt]="imagen?.tags"
+      />
+    </div>
+
+    <div class="col-lg-5 mb-3">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5><strong>Detalles</strong></h5>
+          <hr />
+
+          <p class="card-text mb-0">
+            <strong>👍 {{ imagen?.likes | number }}</strong> Likes
+          </p>
+          <p class="card-text">
+            <strong>👁‍🗨 {{ imagen?.views | number }}</strong> Vistas
+          </p>
+
+          <ng-container
+            *ngFor="let tag of handlerTags(imagen?.tags); index as i"
+          >
+            <span class="badge badge-primary ml-1" style="font-size: 14px">
+              {{ tag }}</span
+            >
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
