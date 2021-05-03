@@ -5,12 +5,10 @@ export const getImagenes = createAction(
   '[Imagenes] Get Imagenes',
   props<{ q: string; category: string }>()
 );
-
 export const getImagenesSuccess = createAction(
   '[Imagenes] Get Imagen Success',
   props<{ imagenes: Imagen[] }>()
 );
-
 export const getImagenesFailure = createAction(
   '[Imagenes] Get Imagen Failure',
   props<{ errMessage: string }>()

@@ -14,7 +14,7 @@ import { SearchComponent } from './components/search/search.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DetallesImagenComponent } from './pages/detalles-imagen/detalles-imagen.component';
 
-import { fromRoot } from './states/imagenes';
+import { fromImagen } from './states/imagenes';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -30,8 +30,8 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ imagenes: fromRoot.imagenReducer }),
-    EffectsModule.forRoot([fromRoot.ImagenEffects]),
+    StoreModule.forRoot({ imagenes: fromImagen.imagenReducer }),
+    EffectsModule.forRoot([fromImagen.ImagenEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

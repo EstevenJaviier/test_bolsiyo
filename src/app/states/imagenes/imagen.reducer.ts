@@ -6,7 +6,7 @@ const _imagenReducer = createReducer(
   initialState,
   on(ImagenActions.getImagenesSuccess, (state, action) => ({
     ...state,
-    imagenes: action.imagenes,
+    imagenes: [...action.imagenes],
   })),
   on(ImagenActions.getImagenesFailure, (state, action) => ({
     ...state,
@@ -14,7 +14,7 @@ const _imagenReducer = createReducer(
   })),
   on(ImagenActions.getImagenById, (state, action) => ({
     ...state,
-    imagen: state.imagenes.find((imagen) => imagen.id === action.id),
+    imagenId: action.id,
   }))
 );
 

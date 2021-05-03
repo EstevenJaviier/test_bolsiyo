@@ -3,8 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Imagen } from 'src/app/interfaces/imagen.interface';
-import { fromRoot } from 'src/app/states/imagenes';
-import { ImagenState } from 'src/app/states/imagenes/imagen.state';
+import { fromImagen } from 'src/app/states/imagenes';
 
 @Component({
   templateUrl: './listar-imagenes.component.html',
@@ -12,20 +11,17 @@ import { ImagenState } from 'src/app/states/imagenes/imagen.state';
 })
 export class ListarImagenesComponent implements OnInit {
   q: string;
-  imagenes$: Observable<{ imagenes: Imagen[] }>;
+  imagenes$: Observable<Imagen[]>;
 
-  constructor(
-    private route: ActivatedRoute,
-    private store: Store<{ imagenes: ImagenState }>
-  ) {
-    this.imagenes$ = this.store.select((state) => state.imagenes);
+  constructor(private route: ActivatedRoute, private store: Store) {
+    this.imagenes$ = this.store.select(fromImagen.selectImagenes);
   }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params: ParamMap) => {
       this.q = params.get('q');
       this.store.dispatch(
-        fromRoot.getImagenes({
+        fromImagen.getImagenes({
           q: params.get('q'),
           category: params.get('category'),
         })

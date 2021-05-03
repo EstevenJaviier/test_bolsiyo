@@ -3,14 +3,20 @@ import { ImagenState } from './imagen.state';
 
 const getImagenState = createFeatureSelector<ImagenState>('imagenes');
 
-export const selectGetImagenes = createSelector(
-  (state: { imagenState: ImagenState }) => state.imagenState,
-  getImagenState
+export const selectImagenes = createSelector(
+  getImagenState,
+  (state: ImagenState) => state.imagenes
 );
 
-export const selectGetImagenById = createSelector(
-  (state: { imagenState: ImagenState }, props: any) => {
-    return state.imagenState.imagenes.find((imagen) => imagen.id === props.id);
-  },
-  getImagenState
+export const selectImagenId = createSelector(
+  getImagenState,
+  (state: ImagenState) => state.imagenId
+);
+
+export const selectCurrentImagen = createSelector(
+  getImagenState,
+  selectImagenId,
+  (state: ImagenState, id: number) => {
+    return state.imagenes.find((imagen) => imagen.id === id);
+  }
 );

@@ -1,16 +1,13 @@
-import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { Imagen } from 'src/app/interfaces/imagen.interface';
 
-export interface ImagenState extends EntityState<Imagen> {
+export interface ImagenState {
   imagenes: Imagen[];
-  imagen: Imagen;
+  imagenId: number;
   errMessage: string;
 }
 
-export const imagenesAdapter = createEntityAdapter<Imagen>({});
-
-export const initialState: ImagenState = imagenesAdapter.getInitialState({
+export const initialState: ImagenState = {
   imagenes: [],
-  imagen: null,
+  imagenId: null,
   errMessage: null,
-});
+};
